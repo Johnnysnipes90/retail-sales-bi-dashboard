@@ -227,7 +227,7 @@ All measures are fully slicer-aware and respond dynamically to Date, Customer, P
 ### Prerequisites
 
 - Python 3.9+
-- SQL database (PostgreSQL / MySQL / SQL Server or equivalent)
+- SQL database (PostgreSQL)
 - Power BI Desktop
 - Git
 
@@ -242,42 +242,29 @@ cd retail-sales-bi-dashboard
 
 Step 2: Data Preparation (Python)
 
-Place the raw dataset in data/raw/
-
-Run the data preparation script in scripts/
-
-Output is saved automatically to data/processed/
+- Place the raw dataset in data/raw/
+- Run the data preparation script in scripts/
+- Output is saved automatically to data/processed/
 
 This step produces analytics-ready data for modeling.
 ---
 Step 3: Database & SQL Modeling
-
-Create the database schema
-
-Execute SQL scripts in sql/schema/ to create fact and dimension tables
-
-Load processed data into the fact table
-
-Use SQL views in sql/views/ for validation and exploration
+- Create the database schema
+- Execute SQL scripts in sql/schema/ to create fact and dimension tables
+- Load processed data into the fact table
+- Use SQL views in sql/views/ for validation and exploration
 ---
 Step 4: Power BI Modeling
-
-Open Retail_Sales_BI_Dashboard.pbix
-
-Connect Power BI to the database
-
-Validate relationships align with the star schema
-
-Ensure all DAX measures live in the Measures table
+- Open Retail_Sales_BI_Dashboard.pbix
+- Connect Power BI to the database
+- Validate relationships align with the star schema
+- Ensure all DAX measures live in the Measures table
 ---
 
 Step 5: Dashboard Validation
-
-Test slicers (Date, Customer, Product, Geography)
-
-Validate KPI values against SQL results
-
-Confirm visuals respond correctly to filters
+- Test slicers (Date, Customer, Product, Geography)
+- Validate KPI values against SQL results
+- Confirm visuals respond correctly to filters
 
 At this point, the dashboard is fully reproducible and production-ready.
 ---
