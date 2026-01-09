@@ -97,8 +97,8 @@ The dataset captures **global retail transactions**, including customer attribut
 - Other segments: ~18%
 
 #### Geographic Coverage
-- Countries: 1,400+ unique
-- States: 700+ unique
+- Countries: 147 unique
+- States: 1000+ unique
 - Markets: APAC, LATAM, US, EMEA
 - Largest Market: APAC (~21%)
 - Largest Country: United States (~19%)
