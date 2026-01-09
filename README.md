@@ -238,27 +238,42 @@ Key insights:
 
 ## Repository Structure
 
-├── data
-│   ├── raw
+retail-sales-bi-dashboard/
+│
+├── data/
+│   ├── raw/                     # Original untouched data
 │   │   └── superstore_sales_clean.csv
-│   └── processed
-│       └── fact_sales_clean.csv
+│   │
+│   ├── processed/               # Cleaned & feature-engineered data
+│   │   └── fact_sales_clean.csv
 │
-├── scripts
-│   └── data_cleaning.py
+├── scripts/
+│   └── data_cleaning.py          # Python data preparation pipeline
 │
-├── sql
-│   ├── 01_schema
-│   ├── 02_facts
-│   └── 03_views
+├── sql/
+│   ├── schema/                   # Tables & star schema
+│   │   ├── dim_date.sql
+│   │   ├── dim_customer.sql
+│   │   ├── dim_product.sql
+│   │   ├── dim_ship_mode.sql
+│   │   └── fact_sales_bi.sql
+│   │
+│   ├── views/                    # BI-ready analytical views
+│   │   ├── vw_kpi_summary.sql
+│   │   ├── vw_monthly_sales.sql
+│   │   ├── vw_customer_intelligence.sql
+│   │   ├── vw_product_performance.sql
+│   │   └── vw_discount_performance.sql
 │
-├── powerbi
+├── powerbi/
 │   └── Retail_Sales_BI_Dashboard.pbix
 │
-├── assets
-│   └── architecture_diagram.png
+├── assets/
+│   ├── architecture_diagram.png
+│   └── dashboard_screenshots/
 │
-└── README.md
+├── README.md
+└── LICENSE
 
 
 ---
