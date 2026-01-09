@@ -40,6 +40,7 @@ This project follows a **modern Business Intelligence (BI) architecture**, separ
 ---
 
 ## ARCHITECTURE DIAGRAM
+```
 Raw Data
 (CSV)
    ↓
@@ -56,6 +57,7 @@ Power BI Semantic Model
    ↓
 Dashboards
 (Executive & Customer)
+```
 ---
 
 
