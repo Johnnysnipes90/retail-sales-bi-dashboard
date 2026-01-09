@@ -237,7 +237,7 @@ Key insights:
 ---
 
 ## Repository Structure
-
+`
 retail-sales-bi-dashboard/
 │
 ├── data/
@@ -274,7 +274,7 @@ retail-sales-bi-dashboard/
 │
 ├── README.md
 └── LICENSE
-
+`
 
 ---
 
