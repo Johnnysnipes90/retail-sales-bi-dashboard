@@ -235,7 +235,7 @@ All measures are fully slicer-aware and respond dynamically to Date, Customer, P
 ---
 
 ## 📂 Repository Structure
-
+```
 retail-sales-bi-dashboard/
 │
 ├── data/
@@ -272,7 +272,7 @@ retail-sales-bi-dashboard/
 │
 ├── README.md
 └── LICENSE
-
+```
 
 ├── data
 │   ├── raw
