@@ -25,6 +25,41 @@ The final output is a **multi-page Power BI dashboard** designed for **executive
 
 ---
 
+## 🧠 Solution Architecture
+
+This project follows a **modern Business Intelligence (BI) architecture**, separating data preparation, modeling, analytics, and visualization layers to ensure **scalability, accuracy, and governance**.
+
+### Architecture Overview
+- **Data Layer:** Raw retail transaction data (CSV)
+- **Processing Layer:** Python-based data cleaning and feature engineering
+- **Modeling Layer:** SQL star schema (fact and dimension tables)
+- **Analytics Layer:** Power BI semantic model with centralized DAX measures
+- **Presentation Layer:** Interactive executive dashboards
+
+📌 *This layered architecture mirrors real-world BI systems used in production environments and ensures consistent, governed business metrics.*
+---
+
+## ARCHITECTURE DIAGRAM
+Raw Data
+(CSV)
+   ↓
+Python ETL
+(Cleaning & Features)
+   ↓
+Processed Data
+   ↓
+SQL Star Schema
+(Fact + Dimensions)
+   ↓
+Power BI Semantic Model
+(DAX Measures)
+   ↓
+Dashboards
+(Executive & Customer)
+---
+
+
+
 ## 🎯 Business Objectives
 
 This dashboard enables stakeholders to answer key business questions such as:
@@ -351,4 +386,4 @@ Business Intelligence Analyst | Data Analyst
 
 ## 🏁 Final Notes
 
-This project reflects **real-world Business Intelligence delivery**, combining data engineering, analytical modeling, and executive storytelling. It demonstrates how scalable, governed, and decision-focused BI solutions are built in modern data-driven organizations.
+This project mirrors ** real-world Business Intelligence delivery standards used in enterprise environments.**, combining data engineering, analytical modeling, and executive storytelling. It demonstrates how scalable, governed, and decision-focused BI solutions are built in modern data-driven organizations.
