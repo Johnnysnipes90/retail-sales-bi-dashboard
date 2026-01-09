@@ -47,7 +47,7 @@ This dashboard answers critical business questions such as:
 | Dataset Name | Superstore Retail Sales |
 | Total Records | 51,291 rows |
 | Total Features | 21 columns |
-| Time Coverage | 24 months |
+| Time Coverage | (2011-14) 4 years |
 | Granularity | Order-level transactions |
 | Missing Values | None (after cleaning) |
 | Data Types | Numeric & Categorical |
@@ -239,33 +239,24 @@ Key insights:
 ## Repository Structure
 
 ├── data
-│ ├── raw
-│ │ └── superstore_sales_clean.csv
-│ └── processed
-│ └── fact_sales_clean.csv
+│   ├── raw
+│   │   └── superstore_sales_clean.csv
+│   └── processed
+│       └── fact_sales_clean.csv
+│
+├── scripts
+│   └── data_cleaning.py
 │
 ├── sql
-│ ├── 01_schema
-│ │ ├── dim_date.sql
-│ │ ├── dim_customer.sql
-│ │ ├── dim_product.sql
-│ │ └── dim_ship_mode.sql
-│ │
-│ ├── 02_facts
-│ │ └── fact_sales_bi.sql
-│ │
-│ └── 03_views
-│ ├── vw_kpi_summary.sql
-│ ├── vw_monthly_sales.sql
-│ ├── vw_customer_intelligence.sql
-│ ├── vw_product_performance.sql
-│ └── vw_discount_performance.sql
+│   ├── 01_schema
+│   ├── 02_facts
+│   └── 03_views
 │
 ├── powerbi
-│ └── Retail_Sales_BI_Dashboard.pbix
+│   └── Retail_Sales_BI_Dashboard.pbix
 │
 ├── assets
-│ └── architecture_diagram.png
+│   └── architecture_diagram.png
 │
 └── README.md
 
