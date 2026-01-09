@@ -1,40 +1,129 @@
-# Retail Sales Business Intelligence Dashboard (Power BI)
+# 📊 Retail Sales Business Intelligence Dashboard (Power BI)
 
-## Project Overview
-
-This project delivers a complete, end-to-end Business Intelligence (BI solution for retail sales analysis using SQL, Power BI, and DAX. The primary objective is to transform raw transactional sales data into reliable, insightful, and executive-ready analytics that support strategic decision-making.
-
-The solution follows real-world BI best practices including dimensional modeling, centralized metric governance, advanced time intelligence, and professional dashboard storytelling. The final output is a multi-page Power BI dashboard designed for executives, managers, and analysts.
+![Power BI](https://img.shields.io/badge/Power%20BI-Business%20Intelligence-yellow)
+![SQL](https://img.shields.io/badge/SQL-Data%20Modeling-blue)
+![DAX](https://img.shields.io/badge/DAX-Analytics-orange)
+![Python](https://img.shields.io/badge/Python-Data%20Preparation-green)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ---
 
-## Business Objectives
+## 📖 Project Overview
 
-The dashboard answers critical business questions such as:
+This project delivers a **complete, end-to-end Business Intelligence (BI) solution** for retail sales analysis using **Python, SQL, Power BI, and DAX**.
 
-- What is the overall sales and profit performance over time?
-- How is the business performing Year-to-Date (YTD) and Year-over-Year (YoY)?
-- Which customers drive the most revenue and profit?
-- Which product categories and sub-categories are most profitable?
+The primary objective is to transform **raw transactional sales data** into **clean, reliable, and executive-ready analytics** that support strategic and operational decision-making.
+
+The solution follows **real-world BI best practices**, including:
+- Data cleaning and feature engineering in Python
+- Dimensional (star schema) modeling in SQL
+- Centralized KPI governance using DAX
+- Advanced time intelligence (YTD, YoY)
+- Executive-focused dashboard storytelling
+
+The final deliverable is a **multi-page Power BI dashboard** designed for **executives, managers, and analysts**.
+
+---
+
+## 🎯 Business Objectives
+
+This dashboard answers critical business questions such as:
+
+- What is the overall sales and profit performance?
+- How is the business performing **Year-to-Date (YTD)** and **Year-over-Year (YoY)**?
+- Which customers generate the most revenue and profit?
+- Which product categories and sub-categories drive performance?
 - How do discounts affect revenue, profitability, and margins?
-- What actionable insights can leadership use to improve performance?
+- Where can leadership take data-driven action?
 
 ---
 
-## Dataset Description
+## 🗂️ Dataset Overview
 
-- **Source:** Superstore retail transactional dataset  
-- **Time Coverage:** 24 months  
-- **Granularity:** Order-level transactions  
+### Dataset Summary
 
-Key attributes include:
-- Order and shipping dates
-- Customer demographics and geography
-- Product hierarchy
-- Sales revenue, profit, discounts, quantities
-- Shipping costs and fulfillment details
+| Attribute | Description |
+|--------|------------|
+| Dataset Name | Superstore Retail Sales |
+| Total Records | 51,291 rows |
+| Total Features | 21 columns |
+| Time Coverage | 24 months |
+| Granularity | Order-level transactions |
+| Missing Values | None (after cleaning) |
+| Data Types | Numeric & Categorical |
 
-The dataset was cleaned, validated, and enriched before analytical modeling.
+The dataset represents **global retail transactions**, including sales, customer attributes, product hierarchy, shipping details, and geographic dimensions.
+
+---
+
+### Dataset Schema
+
+| Column Name | Description |
+|-----------|------------|
+| order_id | Unique identifier for each order |
+| order_date | Date the order was placed |
+| ship_date | Date the order was shipped |
+| ship_mode | Shipping method |
+| customer_name | Customer full name |
+| segment | Customer segment |
+| state | State |
+| country | Country |
+| market | Global market |
+| region | Sales region |
+| product_id | Product identifier |
+| category | Product category |
+| sub_category | Product sub-category |
+| product_name | Product description |
+| sales | Revenue generated |
+| quantity | Units sold |
+| discount | Discount applied |
+| profit | Profit earned |
+| shipping_cost | Cost of shipping |
+| order_priority | Fulfillment priority |
+| year | Order year |
+
+---
+
+### Key Dataset Characteristics
+
+#### Shipping Mode Distribution
+- Standard Class: ~60%
+- Second Class: ~20%
+- Other modes: ~20%
+
+#### Customer Segmentation
+- Consumer: ~52%
+- Corporate: ~30%
+- Other segments: ~18%
+
+#### Geographic Coverage
+- Countries: 1,400+ unique
+- States: 700+ unique
+- Markets: APAC, LATAM, US, EMEA
+- Top Country: United States (~19%)
+- Top Market: APAC (~21%)
+
+---
+
+## 🧹 Data Cleaning & Feature Engineering (Python)
+
+Raw data was cleaned and enriched using **Python (Pandas & NumPy)** before analytical modeling.
+
+### Cleaning & Validation Steps
+
+1. Parsed order and shipping dates into proper datetime formats
+2. Converted year to integer for time analysis
+3. Removed duplicate records
+4. Validated numeric fields (sales, profit, discount, shipping cost)
+5. Ensured quantity was stored as integer
+6. Removed rows with invalid or missing critical values
+7. Created operational and financial metrics
+8. Bucketed discounts for BI analysis
+
+### Engineered Features
+- `shipping_days` → Order fulfillment duration
+- `profit_margin` → Profitability efficiency
+- `discount_band` → Discount impact analysis
 
 ---
 
