@@ -274,28 +274,6 @@ retail-sales-bi-dashboard/
 └── LICENSE
 ```
 
-├── data
-│   ├── raw
-│   │   └── superstore_sales_clean.csv
-│   └── processed
-│       └── fact_sales_clean.csv
-│
-├── scripts
-│   └── data_cleaning.py
-│
-├── sql
-│   ├── 01_schema
-│   ├── 02_facts
-│   └── 03_views
-│
-├── powerbi
-│   └── Retail_Sales_BI_Dashboard.pbix
-│
-├── assets
-│   └── architecture_diagram.png
-│
-└── README.md
-
 
 ---
 
@@ -313,11 +291,12 @@ This solution enables:
 
 ## 👤 Author
 
-**John Olalemi**  
+**Olalemi John Oluwatosin**  
 Business Intelligence Analyst | Data Analyst  
 
-🔗 LinkedIn: *Add link*  
-🔗 GitHub: *Add link*  
+📧 Email: **johnolalemi90@gmail.com**  
+🔗 LinkedIn: https://www.linkedin.com/in/john-olalemi  
+🔗 GitHub: https://github.com/Johnnysnipes90  
 
 ---
 
