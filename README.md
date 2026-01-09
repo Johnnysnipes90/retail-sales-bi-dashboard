@@ -221,6 +221,68 @@ All measures are fully slicer-aware and respond dynamically to Date, Customer, P
 
 ---
 
+
+## 🔁 How to Reproduce This Project (Step-by-Step)
+
+### Prerequisites
+
+- Python 3.9+
+- SQL database (PostgreSQL / MySQL / SQL Server or equivalent)
+- Power BI Desktop
+- Git
+
+---
+
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/Johnnysnipes90/retail-sales-bi-dashboard.git
+cd retail-sales-bi-dashboard
+```
+---
+
+Step 2: Data Preparation (Python)
+
+Place the raw dataset in data/raw/
+
+Run the data preparation script in scripts/
+
+Output is saved automatically to data/processed/
+
+This step produces analytics-ready data for modeling.
+---
+Step 3: Database & SQL Modeling
+
+Create the database schema
+
+Execute SQL scripts in sql/schema/ to create fact and dimension tables
+
+Load processed data into the fact table
+
+Use SQL views in sql/views/ for validation and exploration
+---
+Step 4: Power BI Modeling
+
+Open Retail_Sales_BI_Dashboard.pbix
+
+Connect Power BI to the database
+
+Validate relationships align with the star schema
+
+Ensure all DAX measures live in the Measures table
+---
+
+Step 5: Dashboard Validation
+
+Test slicers (Date, Customer, Product, Geography)
+
+Validate KPI values against SQL results
+
+Confirm visuals respond correctly to filters
+
+At this point, the dashboard is fully reproducible and production-ready.
+---
+
+
 ## 🛠️ Tools & Technologies
 
 | Tool | Purpose |
