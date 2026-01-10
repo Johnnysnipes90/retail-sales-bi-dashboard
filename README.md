@@ -10,9 +10,9 @@
 
 ## 📖 Project Overview
 
-This project presents a **production-ready, end-to-end Business Intelligence (BI) solution** for retail sales analytics built with **Python, SQL, Power BI, and DAX**.
+This project delivers a **Production-grade, end-to-end Business Intelligence solution** for retail sales analytics built with **Python, SQL, Power BI, and DAX**.
 
-The goal is to convert **raw transactional retail data** into **accurate, scalable, and executive-ready insights** that support strategic decision-making across sales, marketing, and operations.
+The objective is to transform **raw transactional retail data** into **trusted, scalable, and executive-ready insights** that support decision-making across sales, marketing, and operations.
 
 The solution follows **real-world BI engineering and analytics best practices**, including:
 - Structured data preparation and validation
@@ -39,25 +39,10 @@ This project follows a **modern Business Intelligence (BI) architecture**, separ
 📌 *This layered architecture mirrors real-world BI systems used in production environments and ensures consistent, governed business metrics.*
 ---
 
-## ARCHITECTURE DIAGRAM
-```
-Raw Data
-(CSV)
-   ↓
-Python ETL
-(Cleaning & Features)
-   ↓
-Processed Data
-   ↓
-SQL Star Schema
-(Fact + Dimensions)
-   ↓
-Power BI Semantic Model
-(DAX Measures)
-   ↓
-Dashboards
-(Executive & Customer)
-```
+### Architecture Diagram
+
+![Solution Architecture](assets/architecture_diagram.png)
+
 ---
 
 
@@ -277,20 +262,22 @@ cd retail-sales-bi-dashboard
 ```
 ---
 
-Step 2: Data Preparation (Python)
-
-- Place the raw dataset in data/raw/
-- Run the data preparation script in scripts/
-- Output is saved automatically to data/processed/
-
-This step produces analytics-ready data for modeling.
+2. Run Data Pipeline
+- Place raw CSV in data/raw/
+Run:
+```python run_etl.py
+```
+- Output saved to data/processed/
+- This step produces analytics-ready data for modeling.
 ---
+
 Step 3: Database & SQL Modeling
 - Create the database schema
 - Execute SQL scripts in sql/schema/ to create fact and dimension tables
 - Load processed data into the fact table
 - Use SQL views in sql/views/ for validation and exploration
 ---
+
 Step 4: Power BI Modeling
 - Open Retail_Sales_BI_Dashboard.pbix
 - Connect Power BI to the database
@@ -303,7 +290,6 @@ Step 5: Dashboard Validation
 - Validate KPI values against SQL results
 - Confirm visuals respond correctly to filters
 
-At this point, the dashboard is fully reproducible and production-ready.
 ---
 
 
@@ -329,10 +315,11 @@ retail-sales-bi-dashboard/
 │ │ └── superstore_sales_clean.csv
 │ │
 │ └── processed/ # Cleaned & enriched data
-│ └── fact_sales_clean.csv
+│  └── fact_sales_clean.csv
 │
-├── scripts/
-│ └── data_preparation.py # Data cleaning & feature engineering pipeline
+├── src/
+│   └── sales_etl.py
+│
 │
 ├── sql/
 │ ├── schema/ # Star schema definitions
@@ -356,6 +343,8 @@ retail-sales-bi-dashboard/
 │ ├── architecture_diagram.png
 │ └── dashboard_screenshots/
 │
+├── run_etl.py
+├── requirements.txt
 ├── README.md
 └── LICENSE
 ```
