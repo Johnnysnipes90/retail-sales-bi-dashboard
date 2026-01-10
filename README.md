@@ -265,7 +265,8 @@ cd retail-sales-bi-dashboard
 2. Run Data Pipeline
 - Place raw CSV in data/raw/
 Run:
-```python run_etl.py
+```
+python run_etl.py
 ```
 - Output saved to data/processed/
 - This step produces analytics-ready data for modeling.
