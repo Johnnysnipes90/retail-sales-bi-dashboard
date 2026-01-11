@@ -15,6 +15,7 @@ This project delivers a **Production-grade, end-to-end Business Intelligence sol
 The objective is to transform **raw transactional retail data** into **trusted, scalable, and executive-ready insights** that support decision-making across sales, marketing, and operations.
 
 The solution follows **real-world BI engineering and analytics best practices**, including:
+
 - Structured data preparation and validation
 - Dimensional (star schema) modeling
 - Centralized KPI and metric governance
@@ -30,22 +31,20 @@ The final output is a **multi-page Power BI dashboard** designed for **executive
 This project follows a **modern Business Intelligence (BI) architecture**, separating data preparation, modeling, analytics, and visualization layers to ensure **scalability, accuracy, and governance**.
 
 ### Architecture Overview
+
 - **Data Layer:** Raw retail transaction data (CSV)
 - **Processing Layer:** Python-based data cleaning and feature engineering
 - **Modeling Layer:** SQL star schema (fact and dimension tables)
 - **Analytics Layer:** Power BI semantic model with centralized DAX measures
 - **Presentation Layer:** Interactive executive dashboards
 
-📌 *This layered architecture mirrors real-world BI systems used in production environments and ensures consistent, governed business metrics.*
----
+## 📌 _This layered architecture mirrors real-world BI systems used in production environments and ensures consistent, governed business metrics._
 
 ### Architecture Diagram
 
 ![Solution Architecture](assets/architecture_diagram.png)
 
 ---
-
-
 
 ## 🎯 Business Objectives
 
@@ -64,15 +63,15 @@ This dashboard enables stakeholders to answer key business questions such as:
 
 ### Dataset Summary
 
-| Attribute | Description |
-|---------|-------------|
-| Dataset Name | Superstore Retail Sales |
-| Records | 51,291 rows |
-| Features | 21 columns |
-| Time Coverage | 2011 – 2014 (4 years) |
-| Granularity | Order-level transactions |
-| Data Quality | Cleaned & validated |
-| Data Types | Numeric & categorical |
+| Attribute     | Description              |
+| ------------- | ------------------------ |
+| Dataset Name  | Superstore Retail Sales  |
+| Records       | 51,291 rows              |
+| Features      | 21 columns               |
+| Time Coverage | 2011 – 2014 (4 years)    |
+| Granularity   | Order-level transactions |
+| Data Quality  | Cleaned & validated      |
+| Data Types    | Numeric & categorical    |
 
 The dataset captures **global retail transactions**, including customer attributes, product hierarchies, shipping details, financial metrics, and geographic information.
 
@@ -80,45 +79,48 @@ The dataset captures **global retail transactions**, including customer attribut
 
 ### Dataset Schema
 
-| Column | Description |
-|------|-------------|
-| order_id | Unique order identifier |
-| order_date | Date order was placed |
-| ship_date | Date order was shipped |
-| ship_mode | Shipping method |
-| customer_name | Customer name |
-| segment | Customer segment |
-| state | State |
-| country | Country |
-| market | Global market |
-| region | Sales region |
-| product_id | Product identifier |
-| category | Product category |
-| sub_category | Product sub-category |
-| product_name | Product name |
-| sales | Revenue generated |
-| quantity | Units sold |
-| discount | Discount applied |
-| profit | Profit earned |
-| shipping_cost | Shipping cost |
-| order_priority | Fulfillment priority |
-| year | Order year |
+| Column         | Description             |
+| -------------- | ----------------------- |
+| order_id       | Unique order identifier |
+| order_date     | Date order was placed   |
+| ship_date      | Date order was shipped  |
+| ship_mode      | Shipping method         |
+| customer_name  | Customer name           |
+| segment        | Customer segment        |
+| state          | State                   |
+| country        | Country                 |
+| market         | Global market           |
+| region         | Sales region            |
+| product_id     | Product identifier      |
+| category       | Product category        |
+| sub_category   | Product sub-category    |
+| product_name   | Product name            |
+| sales          | Revenue generated       |
+| quantity       | Units sold              |
+| discount       | Discount applied        |
+| profit         | Profit earned           |
+| shipping_cost  | Shipping cost           |
+| order_priority | Fulfillment priority    |
+| year           | Order year              |
 
 ---
 
 ### Key Dataset Characteristics
 
 #### Shipping Modes
+
 - Standard Class: ~60%
 - Second Class: ~20%
 - Other modes: ~20%
 
 #### Customer Segments
+
 - Consumer: ~52%
 - Corporate: ~30%
 - Other segments: ~18%
 
 #### Geographic Coverage
+
 - Countries: 147 unique
 - States: 1000+ unique
 - Markets: APAC, LATAM, US, EMEA
@@ -157,9 +159,11 @@ Cleaned and enriched data was stored in a **processed data layer** for downstrea
 The project uses a **star schema architecture**, optimized for analytical performance and Power BI best practices.
 
 ### Fact Table
+
 - **Sales** (`fact_sales_bi`)
 
 ### Dimension Tables
+
 - **Date**
 - **Customer**
 - **Product**
@@ -197,6 +201,7 @@ This design ensures **scalability, performance, and metric consistency**.
 All business logic and KPIs are implemented using **DAX** and stored in a **dedicated Measures table**.
 
 ### Core KPIs
+
 - Total Sales
 - Total Profit
 - Total Orders
@@ -204,6 +209,7 @@ All business logic and KPIs are implemented using **DAX** and stored in a **dedi
 - Profit Margin
 
 ### Time Intelligence
+
 - Year-to-Date (YTD)
 - Last Year (LY)
 - Year-over-Year (YoY) Growth
@@ -216,6 +222,7 @@ All measures are fully slicer-aware and respond dynamically to Date, Customer, P
 ## 📊 Dashboard Pages
 
 ### 1️⃣ Executive Overview
+
 **Audience:** Senior Leadership
 
 - Key KPIs (Sales, Profit, Orders)
@@ -224,6 +231,7 @@ All measures are fully slicer-aware and respond dynamically to Date, Customer, P
 - Category contribution analysis
 
 ### 2️⃣ Customer Intelligence
+
 **Audience:** Sales & Marketing Teams
 
 - Top customers by sales and profit
@@ -243,7 +251,6 @@ All measures are fully slicer-aware and respond dynamically to Date, Customer, P
 
 ---
 
-
 ## 🔁 How to Reproduce This Project (Step-by-Step)
 
 ### Prerequisites
@@ -256,58 +263,69 @@ All measures are fully slicer-aware and respond dynamically to Date, Customer, P
 ---
 
 ### Step 1: Clone the Repository
+
 ```bash
 git clone https://github.com/Johnnysnipes90/retail-sales-bi-dashboard.git
 cd retail-sales-bi-dashboard
 ```
+
 ---
 
 2. Run Data Pipeline
+
 - Place raw CSV in data/raw/
-Run:
+  Run:
+
 ```
 python run_etl.py
 ```
+
 - Output saved to data/processed/
 - This step produces analytics-ready data for modeling.
+
 ---
 
 Step 3: Database & SQL Modeling
+
 - Create the database schema
 - Execute SQL scripts in sql/schema/ to create fact and dimension tables
 - Load processed data into the fact table
 - Use SQL views in sql/views/ for validation and exploration
+
 ---
 
 Step 4: Power BI Modeling
+
 - Open Retail_Sales_BI_Dashboard.pbix
 - Connect Power BI to the database
 - Validate relationships align with the star schema
 - Ensure all DAX measures live in the Measures table
+
 ---
 
 Step 5: Dashboard Validation
+
 - Test slicers (Date, Customer, Product, Geography)
 - Validate KPI values against SQL results
 - Confirm visuals respond correctly to filters
 
 ---
 
-
 ## 🛠️ Tools & Technologies
 
-| Tool | Purpose |
-|----|--------|
-| Python | Data cleaning & feature engineering |
-| SQL | Data modeling & transformations |
-| Power BI | Analytics & visualization |
-| DAX | KPIs & time intelligence |
-| Power Query | Data shaping |
-| GitHub | Version control & portfolio |
+| Tool        | Purpose                             |
+| ----------- | ----------------------------------- |
+| Python      | Data cleaning & feature engineering |
+| SQL         | Data modeling & transformations     |
+| Power BI    | Analytics & visualization           |
+| DAX         | KPIs & time intelligence            |
+| Power Query | Data shaping                        |
+| GitHub      | Version control & portfolio         |
 
 ---
 
 ## 📂 Repository Structure
+
 ```
 retail-sales-bi-dashboard/
 │
@@ -350,7 +368,6 @@ retail-sales-bi-dashboard/
 └── LICENSE
 ```
 
-
 ---
 
 ## 📈 Business Value Delivered
@@ -368,14 +385,14 @@ This solution enables:
 ## 👤 Author
 
 **Olalemi John Oluwatosin**  
-Business Intelligence Analyst | Data Analyst  
+Business Intelligence Analyst | Data Analyst
 
 📧 Email: **johnolalemi90@gmail.com**  
 🔗 LinkedIn: https://www.linkedin.com/in/john-olalemi  
-🔗 GitHub: https://github.com/Johnnysnipes90  
+🔗 GitHub: https://github.com/Johnnysnipes90
 
 ---
 
 ## 🏁 Final Notes
 
-This project mirrors ** real-world Business Intelligence delivery standards used in enterprise environments.**, combining data engineering, analytical modeling, and executive storytelling. It demonstrates how scalable, governed, and decision-focused BI solutions are built in modern data-driven organizations.
+This project mirrors **real-world Business Intelligence delivery standards used in enterprise environments.**, combining data engineering, analytical modeling, and executive storytelling. It demonstrates how scalable, governed, and decision-focused BI solutions are built in modern data-driven organizations.
