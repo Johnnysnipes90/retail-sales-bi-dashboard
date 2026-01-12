@@ -154,6 +154,20 @@ Cleaned and enriched data was stored in a **processed data layer** for downstrea
 
 ---
 
+### Data Governance & Data Lineage
+
+Raw source data is never modified directly.  
+All cleaning, validation, and feature engineering are performed in the Python ETL layer, and the resulting dataset is written to a separate **processed data layer**.
+
+This ensures:
+
+- Full auditability
+- Reproducibility
+- Protection of raw source data
+- Consistent business logic across reporting and analytics
+
+---
+
 ## 🧱 Data Architecture & Modeling
 
 The project uses a **star schema architecture**, optimized for analytical performance and Power BI best practices.
@@ -181,6 +195,13 @@ The project uses a **star schema architecture**, optimized for analytical perfor
 This design ensures **scalability, performance, and metric consistency**.
 
 ---
+
+### ⚠️ Production Data Modeling Note
+
+This dataset does not provide a unique `customer_id`.  
+For portfolio and demonstration purposes, customers were uniquely identified using a composite of name, location, and segment.
+
+## **In a production system, a surrogate `customer_id` would always be used to avoid name collisions, data duplication, and incorrect customer aggregation.**
 
 ## 🔄 Data & Analytics Workflow
 
