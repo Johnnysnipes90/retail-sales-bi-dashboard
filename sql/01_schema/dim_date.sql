@@ -37,10 +37,11 @@ SELECT
         ELSE FALSE
     END                                   AS is_weekend
 FROM generate_series(
-    (SELECT MIN(order_date) FROM fact_sales_bi),
-    (SELECT MAX(order_date) FROM fact_sales_bi),
+    (SELECT MIN(order_date) FROM fact_sales),
+    (SELECT MAX(order_date) FROM fact_sales),
     INTERVAL '1 day'
-) d;
+)
+
 
 
 CREATE INDEX idx_dim_date_date_key ON dim_date(date_key);
