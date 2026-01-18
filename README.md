@@ -10,35 +10,35 @@
 
 ## 📖 Project Overview
 
-This project delivers a **Production-grade, end-to-end Business Intelligence solution** for retail sales analytics built with **Python, SQL, Power BI, and DAX**.
+This project delivers a **production-grade, end-to-end Business Intelligence (BI) solution** for retail sales analytics using **Python, SQL, Power BI, and DAX**.
 
-The objective is to transform **raw transactional retail data** into **trusted, scalable, and executive-ready insights** that support decision-making across sales, marketing, and operations.
+The objective is to transform **raw transactional retail data** into **trusted, scalable, and executive-ready insights** that enable data-driven decision-making across **sales, marketing, and operations**.
 
-The solution follows **real-world BI engineering and analytics best practices**, including:
+The solution follows **real-world BI engineering best practices**, including:
 
 - Structured data preparation and validation
-- Dimensional (star schema) modeling
+- Dimensional (star schema) data modeling
 - Centralized KPI and metric governance
-- Advanced time-intelligence analytics
+- Robust time-intelligence analytics
 - Executive-focused dashboard storytelling
 
-The final output is a **multi-page Power BI dashboard** designed for **executives, business leaders, and analysts**.
+The final deliverable is a **four-page Power BI dashboard** designed for **executives, business leaders, and analysts**.
 
 ---
 
 ## 🧠 Solution Architecture
 
-This project follows a **modern Business Intelligence (BI) architecture**, separating data preparation, modeling, analytics, and visualization layers to ensure **scalability, accuracy, and governance**.
+This project follows a **modern Business Intelligence architecture**, separating ingestion, transformation, modeling, analytics, and visualization layers to ensure **scalability, accuracy, and governance**.
 
-### Architecture Overview
+### Architecture Layers
 
 - **Data Layer:** Raw retail transaction data (CSV)
 - **Processing Layer:** Python-based data cleaning and feature engineering
 - **Modeling Layer:** SQL star schema (fact and dimension tables)
 - **Analytics Layer:** Power BI semantic model with centralized DAX measures
-- **Presentation Layer:** Interactive executive dashboards
+- **Presentation Layer:** Interactive, executive-ready dashboards
 
-## 📌 _This layered architecture mirrors real-world BI systems used in production environments and ensures consistent, governed business metrics._
+📌 _This layered architecture mirrors real-world BI systems used in enterprise environments and ensures consistent, governed business metrics._
 
 ### Architecture Diagram
 
@@ -48,14 +48,14 @@ This project follows a **modern Business Intelligence (BI) architecture**, separ
 
 ## 🎯 Business Objectives
 
-This dashboard enables stakeholders to answer key business questions such as:
+The dashboard enables stakeholders to answer key business questions such as:
 
 - How is the business performing overall in terms of sales and profit?
 - What are the **Year-to-Date (YTD)** and **Year-over-Year (YoY)** performance trends?
 - Which customers contribute the most to revenue and profitability?
 - Which product categories and sub-categories drive growth?
-- How do discount strategies impact revenue, margins, and profit?
-- Where should leadership focus to improve performance?
+- How do discount strategies impact margins and profit?
+- Where should leadership focus to improve performance and efficiency?
 
 ---
 
@@ -68,7 +68,7 @@ This dashboard enables stakeholders to answer key business questions such as:
 | Dataset Name  | Superstore Retail Sales  |
 | Records       | 51,291 rows              |
 | Features      | 21 columns               |
-| Time Coverage | 2011 – 2014 (4 years)    |
+| Time Coverage | 2011 – 2014              |
 | Granularity   | Order-level transactions |
 | Data Quality  | Cleaned & validated      |
 | Data Types    | Numeric & categorical    |
@@ -77,100 +77,71 @@ The dataset captures **global retail transactions**, including customer attribut
 
 ---
 
-### Dataset Schema
+### Dataset Schema (Key Fields)
 
-| Column         | Description             |
-| -------------- | ----------------------- |
-| order_id       | Unique order identifier |
-| order_date     | Date order was placed   |
-| ship_date      | Date order was shipped  |
-| ship_mode      | Shipping method         |
-| customer_name  | Customer name           |
-| segment        | Customer segment        |
-| state          | State                   |
-| country        | Country                 |
-| market         | Global market           |
-| region         | Sales region            |
-| product_id     | Product identifier      |
-| category       | Product category        |
-| sub_category   | Product sub-category    |
-| product_name   | Product name            |
-| sales          | Revenue generated       |
-| quantity       | Units sold              |
-| discount       | Discount applied        |
-| profit         | Profit earned           |
-| shipping_cost  | Shipping cost           |
-| order_priority | Fulfillment priority    |
-| year           | Order year              |
-
----
-
-### Key Dataset Characteristics
-
-#### Shipping Modes
-
-- Standard Class: ~60%
-- Second Class: ~20%
-- Other modes: ~20%
-
-#### Customer Segments
-
-- Consumer: ~52%
-- Corporate: ~30%
-- Other segments: ~18%
-
-#### Geographic Coverage
-
-- Countries: 147 unique
-- States: 1000+ unique
-- Markets: APAC, LATAM, US, EMEA
-- Largest Market: APAC (~21%)
-- Largest Country: United States (~19%)
+| Column                    | Description             |
+| ------------------------- | ----------------------- |
+| order_id                  | Unique order identifier |
+| order_date                | Date order was placed   |
+| ship_date                 | Date order was shipped  |
+| ship_mode                 | Shipping method         |
+| customer_name             | Customer name           |
+| segment                   | Customer segment        |
+| country / region / market | Geographic attributes   |
+| product_id                | Product identifier      |
+| category / sub_category   | Product hierarchy       |
+| sales                     | Revenue generated       |
+| quantity                  | Units sold              |
+| discount                  | Discount applied        |
+| profit                    | Profit earned           |
+| shipping_cost             | Shipping cost           |
+| order_priority            | Fulfillment priority    |
+| year                      | Order year              |
 
 ---
 
 ## 🧹 Data Preparation & Feature Engineering
 
-Raw data was processed using **Python (Pandas & NumPy)** before loading into the analytical database.
+Raw data is processed using **Python (Pandas & NumPy)** before being loaded into the analytical database.
 
-### Data Cleaning Process
+### Data Cleaning
 
 - Parsed order and shipping dates into standard datetime formats
 - Standardized numeric fields (sales, profit, discounts, shipping cost)
 - Converted quantities to integer values
-- Removed duplicate records
-- Removed invalid or incomplete transactions
-- Ensured consistency across categorical fields
+- Removed duplicate and invalid records
+- Ensured consistency across categorical attributes
 
 ### Feature Engineering
 
-The following analytical features were created to support BI insights:
+Additional analytical features were created to support BI insights:
 
 - **Shipping Days** – Order fulfillment duration
-- **Profit Margin** – Profitability efficiency metric
+- **Profit Margin** – Profitability efficiency
 - **Discount Bands** – Grouped discount levels for impact analysis
 
-Cleaned and enriched data was stored in a **processed data layer** for downstream modeling.
+All cleaned and enriched data is written to a **processed data layer**, preserving the raw source.
 
 ---
 
-### Data Governance & Data Lineage
+### Data Governance & Lineage
 
-Raw source data is never modified directly.  
-All cleaning, validation, and feature engineering are performed in the Python ETL layer, and the resulting dataset is written to a separate **processed data layer**.
+- Raw source data is **never modified directly**
+- All transformations occur in the Python ETL layer
+- Outputs are written to a separate processed dataset
 
 This ensures:
 
-- Full auditability
 - Reproducibility
-- Protection of raw source data
-- Consistent business logic across reporting and analytics
+- Auditability
+- Metric consistency
+- Protection of source data integrity
 
 ---
 
-## 🧱 Data Architecture & Modeling
+## 🧱 Data Modeling & Semantic Layer
 
-The project uses a **star schema architecture**, optimized for analytical performance and Power BI best practices.
+The analytical database uses a **star schema**, optimized for Power BI performance and maintainability.
 
 ### Fact Table
 
@@ -183,43 +154,29 @@ The project uses a **star schema architecture**, optimized for analytical perfor
 - **Product**
 - **Shipping**
 
-### Modeling Best Practices
+### Modeling Best Practices Applied
 
 - One-to-many relationships (dimensions → fact)
 - Single-direction filtering
 - Surrogate keys for all dimensions
-- Centralized DAX Measures table
-- Hidden technical columns for a clean user experience
-- Date dimension used for all time intelligence
-
-This design ensures **scalability, performance, and metric consistency**.
+- Dedicated **Measures table** in Power BI
+- Hidden technical columns for a clean field list
+- Proper Date table marked for time intelligence
 
 ---
 
-### ⚠️ Production Data Modeling Note
+### ⚠️ Production Modeling Note
 
-This dataset does not provide a unique `customer_id`.  
-For portfolio and demonstration purposes, customers were uniquely identified using a composite of name, location, and segment.
+The dataset does not provide a unique `customer_id`.  
+For demonstration purposes, customers were identified using a composite of name, location, and segment.
 
-## **In a production system, a surrogate `customer_id` would always be used to avoid name collisions, data duplication, and incorrect customer aggregation.**
-
-## 🔄 Data & Analytics Workflow
-
-1. Raw data ingestion (CSV)
-2. Data cleaning and feature engineering (Python)
-3. Storage in processed data layer
-4. Schema and dimensional modeling (SQL)
-5. Fact and dimension table creation
-6. BI-ready SQL views for validation
-7. Power BI data model creation
-8. Centralized DAX measures
-9. Dashboard development and validation
+**In a production system, a surrogate `customer_id` would always be implemented** to prevent duplication, collisions, and aggregation errors.
 
 ---
 
 ## 📐 Measures & Analytics Strategy
 
-All business logic and KPIs are implemented using **DAX** and stored in a **dedicated Measures table**.
+All business logic is implemented using **DAX** and centralized in a **Measures table**.
 
 ### Core KPIs
 
@@ -234,9 +191,9 @@ All business logic and KPIs are implemented using **DAX** and stored in a **dedi
 - Year-to-Date (YTD)
 - Last Year (LY)
 - Year-over-Year (YoY) Growth
-- Monthly and yearly trends
+- Monthly & yearly trend analysis
 
-All measures are fully slicer-aware and respond dynamically to Date, Customer, Product, and Geography filters.
+All measures are fully **slicer-aware** and respond dynamically to Date, Product, Customer, and Geography filters.
 
 ---
 
@@ -244,21 +201,50 @@ All measures are fully slicer-aware and respond dynamically to Date, Customer, P
 
 ### 1️⃣ Executive Overview
 
-**Audience:** Senior Leadership
+**Audience:** Senior Leadership  
+**Purpose:** Business health snapshot
 
-- Key KPIs (Sales, Profit, Orders)
-- YTD & YoY performance
-- Sales and profit trends
-- Category contribution analysis
+- Revenue & profit KPIs
+- YTD and YoY growth indicators
+- Monthly sales trends
+- Category and regional revenue drivers
+- Executive insight callouts
 
-### 2️⃣ Customer Intelligence
+---
 
-**Audience:** Sales & Marketing Teams
+### 2️⃣ Sales & Profit Deep Dive
 
-- Top customers by sales and profit
-- Revenue concentration
-- Segment profitability
-- Discount sensitivity insights
+**Audience:** Commercial & Product Teams  
+**Purpose:** Identify revenue and margin drivers
+
+- Category → sub-category performance
+- Profitability analysis
+- Discount vs profit impact
+- Margin leakage detection
+
+---
+
+### 3️⃣ Customer Intelligence
+
+**Audience:** Sales & Marketing  
+**Purpose:** Understand customer value & risk
+
+- Top customers by revenue and profit
+- Customer segmentation
+- Pareto (80/20) revenue concentration analysis
+- Average order value and discount behavior
+
+---
+
+### 4️⃣ Operations & Shipping Performance
+
+**Audience:** Operations & Supply Chain  
+**Purpose:** Operational efficiency insights
+
+- Shipping efficiency KPIs
+- Average shipping days by mode
+- Cost vs speed trade-off analysis
+- Operational impact on profit margins
 
 ---
 
@@ -266,82 +252,33 @@ All measures are fully slicer-aware and respond dynamically to Date, Customer, P
 
 - DAX measures validated against SQL aggregations
 - Slicer interactions tested across all visuals
-- No ambiguous or bidirectional relationships
+- No ambiguous or bi-directional relationships
 - Clean and intuitive field list
 - Consistent KPI definitions across pages
 
 ---
 
-## 🔁 How to Reproduce This Project (Step-by-Step)
+## 🔁 Reproducibility Guide
 
 ### Prerequisites
 
 - Python 3.9+
-- SQL database (PostgreSQL)
+- PostgreSQL
 - Power BI Desktop
 - Git
 
----
-
-### Step 1: Clone the Repository
+### Steps
 
 ```bash
 git clone https://github.com/Johnnysnipes90/retail-sales-bi-dashboard.git
 cd retail-sales-bi-dashboard
-```
-
----
-
-2. Run Data Pipeline
-
-- Place raw CSV in data/raw/
-  Run:
-
-```
 python run_etl.py
 ```
 
-- Output saved to data/processed/
-- This step produces analytics-ready data for modeling.
-
----
-
-Step 3: Database & SQL Modeling
-
-- Create the database schema
-- Execute SQL scripts in sql/schema/ to create fact and dimension tables
-- Load processed data into the fact table
-- Use SQL views in sql/views/ for validation and exploration
-
----
-
-Step 4: Power BI Modeling
-
+- Execute SQL scripts in sql/schema/
+- Load processed data into PostgreSQL
 - Open Retail_Sales_BI_Dashboard.pbix
-- Connect Power BI to the database
-- Validate relationships align with the star schema
-- Ensure all DAX measures live in the Measures table
-
----
-
-Step 5: Dashboard Validation
-
-- Test slicers (Date, Customer, Product, Geography)
-- Validate KPI values against SQL results
-- Confirm visuals respond correctly to filters
-
----
-
-## 🛠️ Tools & Technologies
-
-| Tool        | Purpose                             |
-| ----------- | ----------------------------------- |
-| Python      | Data cleaning & feature engineering |
-| SQL         | Data modeling & transformations     |
-| Power BI    | Analytics & visualization           |
-| DAX         | KPIs & time intelligence            |
-| Power Query | Data shaping                        |
-| GitHub      | Version control & portfolio         |
+- Validate relationships and measures
 
 ---
 
@@ -391,6 +328,19 @@ retail-sales-bi-dashboard/
 
 ---
 
+## 🛠️ Tools & Technologies
+
+| Tool        | Purpose                   |
+| ----------- | ------------------------- |
+| Python      | Data preparation & ETL    |
+| SQL         | Dimensional modeling      |
+| Power BI    | Analytics & visualization |
+| DAX         | KPIs & time intelligence  |
+| Power Query | Data shaping              |
+| GitHub      | Version control           |
+
+---
+
 ## 📈 Business Value Delivered
 
 This solution enables:
@@ -416,4 +366,4 @@ Business Intelligence Analyst | Data Analyst
 
 ## 🏁 Final Notes
 
-This project mirrors **real-world Business Intelligence delivery standards used in enterprise environments.**, combining data engineering, analytical modeling, and executive storytelling. It demonstrates how scalable, governed, and decision-focused BI solutions are built in modern data-driven organizations.
+This project is a **real-world enterprise BI delivery standards**, combining data engineering, semantic modeling, and executive-level storytelling. It demonstrates how scalable, governed, and decision-focused BI solutions are built in modern data-driven organizations.
