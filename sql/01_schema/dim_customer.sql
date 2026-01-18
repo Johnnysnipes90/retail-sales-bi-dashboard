@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS dim_customer;
-
 CREATE TABLE dim_customer (
     customer_key  SERIAL PRIMARY KEY,
     customer_name VARCHAR(255),

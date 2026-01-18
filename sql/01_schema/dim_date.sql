@@ -1,10 +1,3 @@
--- ===============================================================
--- Date Dimension (Continuous Calendar Table)
--- Supports Power BI Time Intelligence (YTD, YoY and the likes)
--- ===============================================================
-
-DROP TABLE IF EXISTS dim_date;
-
 CREATE TABLE dim_date (
     date_key        DATE PRIMARY KEY,
     year            INTEGER,
@@ -20,28 +13,26 @@ CREATE TABLE dim_date (
 
 INSERT INTO dim_date
 SELECT
-    d::date                               AS date_key,
-    EXTRACT(YEAR FROM d)::INTEGER         AS year,
-    CONCAT('Q', EXTRACT(QUARTER FROM d))  AS quarter,
+    gs::date                               AS date_key,
+    EXTRACT(YEAR FROM gs)::INTEGER         AS year,
+    CONCAT('Q', EXTRACT(QUARTER FROM gs))  AS quarter,
     CONCAT(
         'FQ',
-        ((EXTRACT(MONTH FROM d) - 1) / 3 + 1)::INTEGER
+        ((EXTRACT(MONTH FROM gs) - 1) / 3 + 1)::INTEGER
     )                                     AS fiscal_quarter,
-    EXTRACT(MONTH FROM d)::INTEGER        AS month,
-    TRIM(TO_CHAR(d, 'Month'))             AS month_name,
-    EXTRACT(WEEK FROM d)::INTEGER         AS week_of_year,
-    EXTRACT(DAY FROM d)::INTEGER          AS day,
-    TRIM(TO_CHAR(d, 'Day'))               AS weekday,
+    EXTRACT(MONTH FROM gs)::INTEGER        AS month,
+    TRIM(TO_CHAR(gs, 'Month'))             AS month_name,
+    EXTRACT(WEEK FROM gs)::INTEGER         AS week_of_year,
+    EXTRACT(DAY FROM gs)::INTEGER          AS day,
+    TRIM(TO_CHAR(gs, 'Day'))               AS weekday,
     CASE
-        WHEN EXTRACT(DOW FROM d) IN (0, 6) THEN TRUE
+        WHEN EXTRACT(DOW FROM gs) IN (0, 6) THEN TRUE
         ELSE FALSE
     END                                   AS is_weekend
 FROM generate_series(
     (SELECT MIN(order_date) FROM fact_sales),
     (SELECT MAX(order_date) FROM fact_sales),
     INTERVAL '1 day'
-)
-
-
+) AS gs;
 
 CREATE INDEX idx_dim_date_date_key ON dim_date(date_key);

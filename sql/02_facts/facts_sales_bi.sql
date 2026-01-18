@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS fact_sales_bi;
-
 -- Then recreate fact_sales_bi
 CREATE TABLE fact_sales_bi (
     fact_id         SERIAL PRIMARY KEY,

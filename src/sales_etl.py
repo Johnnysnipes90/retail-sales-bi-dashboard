@@ -3,27 +3,23 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from sqlalchemy import create_engine
 
-# -----------------------------------
-# Logging Configuration
-# -----------------------------------
+# ---------------- Logging ----------------
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s"
 )
-
 logger = logging.getLogger(__name__)
 
-
-# -----------------------------------
-# File Paths
-# -----------------------------------
+# ---------------- Config ----------------
 RAW_DATA_PATH = Path("data/raw/superstore_sales_clean.csv")
-PROCESSED_DATA_PATH = Path("data/processed/fact_sales_clean.csv")
+
+# Change to your Postgres credentials
+POSTGRES_URI = "postgresql+psycopg2://postgres:admin@localhost:5432/retail_sales_bi"
+TABLE_NAME = "fact_sales"
 
 
-# -----------------------------------
-# Load Data
-# -----------------------------------
+# ---------------- Functions ----------------
 def load_raw_data(path: Path) -> pd.DataFrame:
     logger.info(f"Loading raw data from {path}")
     df = pd.read_csv(path)
@@ -31,85 +27,52 @@ def load_raw_data(path: Path) -> pd.DataFrame:
     return df
 
 
-# -----------------------------------
-# Data Cleaning
-# -----------------------------------
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("Cleaning data")
-
-    # Convert date columns
     df["order_date"] = pd.to_datetime(df["order_date"], format="mixed", dayfirst=True)
     df["ship_date"] = pd.to_datetime(df["ship_date"], format="mixed", dayfirst=True)
-
-    # Ensure year is integer
     df["year"] = df["year"].astype(int)
-
-    # Remove duplicates
-    initial_rows = len(df)
     df = df.drop_duplicates()
-    logger.info(f"Removed {initial_rows - len(df):,} duplicate rows")
-
-    # Convert numeric columns
+    df["quantity"] = df["quantity"].astype(int)
     numeric_cols = ["sales", "discount", "profit", "shipping_cost"]
     df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors="coerce")
-
-    # Convert quantity
     df["quantity"] = pd.to_numeric(df["quantity"], errors="coerce").astype("Int64")
-
-    # Drop invalid financial rows
     df = df.dropna(subset=["sales", "profit", "quantity"])
-
     logger.info(f"Data cleaned — {len(df):,} valid rows remain")
     return df
 
 
-# -----------------------------------
-# Feature Engineering
-# -----------------------------------
 def create_metrics(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("Creating business metrics")
-
-    # Shipping days
     df["shipping_days"] = (df["ship_date"] - df["order_date"]).dt.days
-
-    # Profit margin
     df["profit_margin"] = np.where(df["sales"] != 0, df["profit"] / df["sales"], 0)
-
-    # Discount bands
     df["discount_band"] = pd.cut(
         df["discount"],
         bins=[-0.01, 0, 0.2, 0.4, 1],
         labels=["No Discount", "Low (≤20%)", "Medium (20–40%)", "High (>40%)"],
     )
-
     return df
 
 
-# -----------------------------------
-# Save Processed Data
-# -----------------------------------
-def save_processed_data(df: pd.DataFrame, path: Path) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    df.to_csv(path, index=False)
-    logger.info(f"Processed data written to {path}")
+def load_to_postgres(df: pd.DataFrame, table_name: str, uri: str):
+    logger.info(f"Connecting to Postgres at {uri}")
+    engine = create_engine(uri)
+    logger.info(f"Loading {len(df):,} rows into Postgres table '{table_name}'")
+    with engine.begin() as conn:  # ensures commit
+        df.to_sql(table_name, conn, if_exists="replace", index=False)
+    logger.info("Data loaded successfully!")
 
 
-# -----------------------------------
-# Full ETL Pipeline
-# -----------------------------------
+# ---------------- Main ETL ----------------
 def run_etl():
-    logger.info("Starting Sales Fact ETL Pipeline")
-
+    logger.info("Starting full ETL pipeline")
     df = load_raw_data(RAW_DATA_PATH)
     df = clean_data(df)
     df = create_metrics(df)
-    save_processed_data(df, PROCESSED_DATA_PATH)
+    load_to_postgres(df, TABLE_NAME, POSTGRES_URI)
+    logger.info("ETL pipeline completed successfully")
 
-    logger.info("ETL Pipeline completed successfully")
 
-
-# -----------------------------------
-# CLI Execution
-# -----------------------------------
+# ---------------- CLI ----------------
 if __name__ == "__main__":
     run_etl()
