@@ -12,7 +12,7 @@
 
 This project delivers a **production-grade, end-to-end Business Intelligence (BI) solution** for retail sales analytics using **Python, SQL, Power BI, and DAX**.
 
-The objective is to transform **raw transactional retail data** into **trusted, scalable, and executive-ready insights** that enable data-driven decision-making across **sales, marketing, and operations**.
+The objective is to transform **raw transactional retail data** into **trusted, scalable, and executive-ready insights** that support decision-making across **sales, marketing, and operations**.
 
 The solution follows **real-world BI engineering best practices**, including:
 
@@ -28,7 +28,7 @@ The final deliverable is a **four-page Power BI dashboard** designed for **execu
 
 ## 🧠 Solution Architecture
 
-This project follows a **modern Business Intelligence architecture**, separating ingestion, transformation, modeling, analytics, and visualization layers to ensure **scalability, accuracy, and governance**.
+This project follows a **modern BI architecture**, separating ingestion, transformation, modeling, analytics, and visualization layers to ensure **scalability, accuracy, and governance**.
 
 ### Architecture Layers
 
@@ -38,7 +38,7 @@ This project follows a **modern Business Intelligence architecture**, separating
 - **Analytics Layer:** Power BI semantic model with centralized DAX measures
 - **Presentation Layer:** Interactive, executive-ready dashboards
 
-📌 _This layered architecture mirrors real-world BI systems used in enterprise environments and ensures consistent, governed business metrics._
+📌 _This layered architecture mirrors enterprise BI systems and ensures consistent, governed business metrics._
 
 ### Architecture Diagram
 
@@ -106,8 +106,8 @@ Raw data is processed using **Python (Pandas & NumPy)** before being loaded into
 
 ### Data Cleaning
 
-- Parsed order and shipping dates into standard datetime formats
-- Standardized numeric fields (sales, profit, discounts, shipping cost)
+- Parsed order and shipping dates into standardized datetime formats
+- Standardized numeric fields (sales, profit, discount, shipping cost)
 - Converted quantities to integer values
 - Removed duplicate and invalid records
 - Ensured consistency across categorical attributes
@@ -118,7 +118,7 @@ Additional analytical features were created to support BI insights:
 
 - **Shipping Days** – Order fulfillment duration
 - **Profit Margin** – Profitability efficiency
-- **Discount Bands** – Grouped discount levels for impact analysis
+- **Discount Bands** – Grouped discount levels for pricing impact analysis
 
 All cleaned and enriched data is written to a **processed data layer**, preserving the raw source.
 
@@ -130,12 +130,7 @@ All cleaned and enriched data is written to a **processed data layer**, preservi
 - All transformations occur in the Python ETL layer
 - Outputs are written to a separate processed dataset
 
-This ensures:
-
-- Reproducibility
-- Auditability
-- Metric consistency
-- Protection of source data integrity
+This ensures reproducibility, auditability, metric consistency, and protection of source data integrity.
 
 ---
 
@@ -170,13 +165,13 @@ The analytical database uses a **star schema**, optimized for Power BI performan
 The dataset does not provide a unique `customer_id`.  
 For demonstration purposes, customers were identified using a composite of name, location, and segment.
 
-**In a production system, a surrogate `customer_id` would always be implemented** to prevent duplication, collisions, and aggregation errors.
+**In a production environment, a surrogate `customer_id` would be implemented** to prevent duplication and aggregation errors.
 
 ---
 
 ## 📐 Measures & Analytics Strategy
 
-All business logic is implemented using **DAX** and centralized in a **Measures table**.
+All business logic is implemented using **DAX** and centralized in a dedicated **Measures table**.
 
 ### Core KPIs
 
@@ -191,7 +186,7 @@ All business logic is implemented using **DAX** and centralized in a **Measures 
 - Year-to-Date (YTD)
 - Last Year (LY)
 - Year-over-Year (YoY) Growth
-- Monthly & yearly trend analysis
+- Monthly and yearly trend analysis
 
 All measures are fully **slicer-aware** and respond dynamically to Date, Product, Customer, and Geography filters.
 
@@ -210,8 +205,6 @@ All measures are fully **slicer-aware** and respond dynamically to Date, Product
 - Category and regional revenue drivers
 - Executive insight callouts
 
----
-
 ### 2️⃣ Sales & Profit Deep Dive
 
 **Audience:** Commercial & Product Teams  
@@ -222,8 +215,6 @@ All measures are fully **slicer-aware** and respond dynamically to Date, Product
 - Discount vs profit impact
 - Margin leakage detection
 
----
-
 ### 3️⃣ Customer Intelligence
 
 **Audience:** Sales & Marketing  
@@ -233,8 +224,6 @@ All measures are fully **slicer-aware** and respond dynamically to Date, Product
 - Customer segmentation
 - Pareto (80/20) revenue concentration analysis
 - Average order value and discount behavior
-
----
 
 ### 4️⃣ Operations & Shipping Performance
 
@@ -298,6 +287,15 @@ All measures are fully **slicer-aware** and respond dynamically to Date, Product
 
 ---
 
+## 🔍 Key Insights Delivered
+
+- Revenue is **highly concentrated**, with a small subset of customers driving a disproportionate share of sales
+- Several sub-categories generate strong revenue but **negatively impact margins**, indicating pricing or cost issues
+- Increased discounting correlates with **margin pressure** in specific categories
+- Certain shipping modes incur **higher costs without proportional speed benefits**, impacting profitability
+
+---
+
 ## ✅ Data Validation & Quality Assurance
 
 - DAX measures validated against SQL aggregations
@@ -322,7 +320,16 @@ All measures are fully **slicer-aware** and respond dynamically to Date, Product
 ```bash
 git clone https://github.com/Johnnysnipes90/retail-sales-bi-dashboard.git
 cd retail-sales-bi-dashboard
+```
+
+# 1) Run Python ETL
+
 python run_etl.py
+
+# 2) Create schema + load into PostgreSQL (run SQL scripts in sql/schema/)
+
+# 3) Open the Power BI file and refresh
+
 ```
 
 - Execute SQL scripts in sql/schema/
@@ -335,33 +342,21 @@ python run_etl.py
 ## 📂 Repository Structure
 
 ```
+
 retail-sales-bi-dashboard/
 │
 ├── data/
-│ ├── raw/ # Original source data
+│ ├── raw/
 │ │ └── superstore_sales_clean.csv
-│ │
-│ └── processed/ # Cleaned & enriched data
-│  └── fact_sales_clean.csv
+│ └── processed/
+│ └── fact_sales_clean.csv
 │
 ├── src/
-│   └── sales_etl.py
-│
+│ └── sales_etl.py
 │
 ├── sql/
-│ ├── schema/ # Star schema definitions
-│ │ ├── dim_date.sql
-│ │ ├── dim_customer.sql
-│ │ ├── dim_product.sql
-│ │ ├── dim_shipping.sql
-│ │ └── fact_sales_bi.sql
-│ │
-│ └── views/ # BI-ready analytical views
-│ ├── vw_kpi_summary.sql
-│ ├── vw_monthly_sales.sql
-│ ├── vw_customer_intelligence.sql
-│ ├── vw_product_performance.sql
-│ └── vw_discount_performance.sql
+│ ├── schema/
+│ └── views/
 │
 ├── powerbi/
 │ └── Retail_Sales_BI_Dashboard.pbix
@@ -374,6 +369,7 @@ retail-sales-bi-dashboard/
 ├── requirements.txt
 ├── README.md
 └── LICENSE
+
 ```
 
 ---
@@ -405,11 +401,11 @@ This solution enables:
 
 ## 👤 Author
 
-**Olalemi John Oluwatosin**  
+**Olalemi John Oluwatosin**
 Business Intelligence Analyst | Data Analyst
 
-📧 Email: **johnolalemi90@gmail.com**  
-🔗 LinkedIn: https://www.linkedin.com/in/john-olalemi  
+📧 Email: **johnolalemi90@gmail.com**
+🔗 LinkedIn: https://www.linkedin.com/in/john-olalemi
 🔗 GitHub: https://github.com/Johnnysnipes90
 
 ---
@@ -417,3 +413,4 @@ Business Intelligence Analyst | Data Analyst
 ## 🏁 Final Notes
 
 This project is a **real-world enterprise BI delivery standards**, combining data engineering, semantic modeling, and executive-level storytelling. It demonstrates how scalable, governed, and decision-focused BI solutions are built in modern data-driven organizations.
+```
