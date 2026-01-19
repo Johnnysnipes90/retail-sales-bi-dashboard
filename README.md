@@ -248,6 +248,56 @@ All measures are fully **slicer-aware** and respond dynamically to Date, Product
 
 ---
 
+## 📸 Dashboard Preview
+
+### 1️⃣ Executive Overview — Business Health Snapshot
+
+![Executive Overview](assets/dashboard_screenshots/01_executive_overview.png)
+
+**Key decisions enabled:**
+
+- Is the business growing or declining?
+- Are sales and profit trends aligned?
+- Which regions and categories drive performance?
+
+---
+
+### 2️⃣ Sales & Profit Deep Dive — Revenue & Margin Drivers
+
+![Sales & Profit Deep Dive](assets/dashboard_screenshots/02_sales_profit_deep_dive.png)
+
+**Key decisions enabled:**
+
+- Which products drive profit vs just revenue?
+- Where is margin leakage occurring?
+- How do discounts impact profitability?
+
+---
+
+### 3️⃣ Customer Intelligence — Value & Concentration Risk
+
+![Customer Intelligence](assets/dashboard_screenshots/03_customer_intelligence.png)
+
+**Key decisions enabled:**
+
+- Who are the most valuable customers?
+- How concentrated is revenue (Pareto risk)?
+- Which segments justify focused investment?
+
+---
+
+### 4️⃣ Operations & Shipping — Cost vs Speed Trade-offs
+
+![Operations & Shipping](assets/dashboard_screenshots/04_operations_shipping.png)
+
+**Key decisions enabled:**
+
+- Which shipping modes are inefficient?
+- Are higher costs justified by speed?
+- How does fulfillment affect profit margins?
+
+---
+
 ## ✅ Data Validation & Quality Assurance
 
 - DAX measures validated against SQL aggregations
