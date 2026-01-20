@@ -339,37 +339,32 @@ python run_etl.py
 
 ---
 
-## 📂 Repository Structure
-
-```
-
 retail-sales-bi-dashboard/
 │
 ├── data/
-│ ├── raw/
-│ │ └── superstore_sales_clean.csv
-│ └── processed/
-│ └── fact_sales_clean.csv
+│   ├── raw/
+│   │   └── superstore_sales_clean.csv
+│   └── processed/
+│       └── fact_sales_clean.csv
 │
 ├── src/
-│ └── sales_etl.py
+│   └── sales_etl.py
 │
 ├── sql/
-│ ├── schema/
-│ └── views/
+│   ├── schema/
+│   └── views/
 │
 ├── powerbi/
-│ └── Retail_Sales_BI_Dashboard.pbix
+│   └── Retail_Sales_BI_Dashboard.pbix
 │
 ├── assets/
-│ ├── architecture_diagram.png
-│ └── dashboard_screenshots/
+│   ├── architecture_diagram.png
+│   └── dashboard_screenshots/
 │
 ├── run_etl.py
 ├── requirements.txt
 ├── README.md
-└── LICENSE```
-
+└── LICENSE
 ---
 
 ## 🛠️ Tools & Technologies
@@ -411,6 +406,8 @@ Business Intelligence Analyst | Data Analyst
 ## 🏁 Final Notes
 
 This project is a **real-world enterprise BI delivery standards**, combining data engineering, semantic modeling, and executive-level storytelling. It demonstrates how scalable, governed, and decision-focused BI solutions are built in modern data-driven organizations.
+
+```
 
 ```
 
