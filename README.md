@@ -340,7 +340,7 @@ python run_etl.py
 ---
 ## 📂 Repository Structure
 The repository is structured to reflect a real-world BI workflow, from raw data ingestion and transformation to dimensional modeling and executive reporting:
-```
+
 
 retail-sales-bi-dashboard/
 │
@@ -369,7 +369,6 @@ retail-sales-bi-dashboard/
 ├── README.md
 └── LICENSE
 
-```
 ---
 
 ## 🛠️ Tools & Technologies
