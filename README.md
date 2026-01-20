@@ -324,13 +324,13 @@ cd retail-sales-bi-dashboard
 
 # 1) Run Python ETL
 
-python run_etl.py
+```python run_etl.py
+
+```
 
 # 2) Create schema + load into PostgreSQL (run SQL scripts in sql/schema/)
 
 # 3) Open the Power BI file and refresh
-
-```
 
 - Execute SQL scripts in sql/schema/
 - Load processed data into PostgreSQL
@@ -338,10 +338,12 @@ python run_etl.py
 - Validate relationships and measures
 
 ---
+
 ## 📂 Repository Structure
+
 The repository is structured to reflect a real-world BI workflow, from raw data ingestion and transformation to dimensional modeling and executive reporting:
 
-
+```
 retail-sales-bi-dashboard/
 │
 ├── data/
@@ -368,6 +370,7 @@ retail-sales-bi-dashboard/
 ├── requirements.txt
 ├── README.md
 └── LICENSE
+```
 
 ---
 
@@ -410,6 +413,8 @@ Business Intelligence Analyst | Data Analyst
 ## 🏁 Final Notes
 
 This project is a **real-world enterprise BI delivery standards**, combining data engineering, semantic modeling, and executive-level storytelling. It demonstrates how scalable, governed, and decision-focused BI solutions are built in modern data-driven organizations.
+
+```
 
 ```
 
