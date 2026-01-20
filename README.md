@@ -317,21 +317,23 @@ All measures are fully **slicer-aware** and respond dynamically to Date, Product
 
 ### Steps
 
+**1) Clone The repo**
+
 ```bash
 git clone https://github.com/Johnnysnipes90/retail-sales-bi-dashboard.git
 cd retail-sales-bi-dashboard
 ```
 
-**1) Run Python ETL**
+**2) Run Python ETL**
 
-```
+```bash
 python run_etl.py
 
 ```
 
-**2) Create schema + load into PostgreSQL (run SQL scripts in sql/schema/)**
+**3) Create schema + load into PostgreSQL (run SQL scripts in sql/schema/)**
 
-**3) Open the Power BI file and refresh**
+**4) Open the Power BI file and refresh**
 
 - Execute SQL scripts in sql/schema/
 - Load processed data into PostgreSQL
