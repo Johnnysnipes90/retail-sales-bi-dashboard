@@ -338,33 +338,38 @@ python run_etl.py
 - Validate relationships and measures
 
 ---
+## 📂 Repository Structure
+The repository is structured to reflect a real-world BI workflow, from raw data ingestion and transformation to dimensional modeling and executive reporting:
+```
 
 retail-sales-bi-dashboard/
 │
 ├── data/
-│   ├── raw/
-│   │   └── superstore_sales_clean.csv
-│   └── processed/
-│       └── fact_sales_clean.csv
+│ ├── raw/
+│ │ └── superstore_sales_clean.csv
+│ └── processed/
+│ └── fact_sales_clean.csv
 │
 ├── src/
-│   └── sales_etl.py
+│ └── sales_etl.py
 │
 ├── sql/
-│   ├── schema/
-│   └── views/
+│ ├── schema/
+│ └── views/
 │
 ├── powerbi/
-│   └── Retail_Sales_BI_Dashboard.pbix
+│ └── Retail_Sales_BI_Dashboard.pbix
 │
 ├── assets/
-│   ├── architecture_diagram.png
-│   └── dashboard_screenshots/
+│ ├── architecture_diagram.png
+│ └── dashboard_screenshots/
 │
 ├── run_etl.py
 ├── requirements.txt
 ├── README.md
 └── LICENSE
+
+```
 ---
 
 ## 🛠️ Tools & Technologies
