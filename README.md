@@ -371,7 +371,6 @@ retail-sales-bi-dashboard/
 └── LICENSE
 
 ```
-
 ---
 
 ## 🛠️ Tools & Technologies
