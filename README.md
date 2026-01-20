@@ -368,9 +368,8 @@ retail-sales-bi-dashboard/
 ├── run_etl.py
 ├── requirements.txt
 ├── README.md
-└── LICENSE
+└── LICENSE```
 
-```
 ---
 
 ## 🛠️ Tools & Technologies
@@ -412,4 +411,7 @@ Business Intelligence Analyst | Data Analyst
 ## 🏁 Final Notes
 
 This project is a **real-world enterprise BI delivery standards**, combining data engineering, semantic modeling, and executive-level storytelling. It demonstrates how scalable, governed, and decision-focused BI solutions are built in modern data-driven organizations.
+
+```
+
 ```
